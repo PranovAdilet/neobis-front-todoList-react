@@ -12,9 +12,9 @@ TodoList is a simple React application to help you manage your tasks. It allows 
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/PranovAdilet/neobis-front-todoList-react.git
-   ```
+ ```bash
+ git clone https://github.com/PranovAdilet/neobis-front-todoList-react.git
+  ```
 Install dependencies:
 
 2. Copy code

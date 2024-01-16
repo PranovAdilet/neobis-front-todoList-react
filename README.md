@@ -17,25 +17,23 @@ TodoList is a simple React application to help you manage your tasks. It allows 
    ```
 Install dependencies:
 
-Copy code
+2. Copy code
 ```bash
 npm install
 ```
-Run the application:
+3. Run the application:
 
 Copy code
 ```bash
 npm start
 ```
-Open http://localhost:3000 in your browser.
+4. Open http://localhost:3000 in your browser.
 
-Usage
-Enter your name in the provided input field.
-Create a new todo by entering a task and selecting a category.
-Your todo list will be displayed below.
-Edit or delete tasks as needed.
-Contributing
-Feel free to contribute to the development of this project. If you find any issues or have suggestions, please open an issue or create a pull request.
+### Usage: 
+* Enter your name in the provided input field.
+* Create a new todo by entering a task and selecting a category.
+* Your todo list will be displayed below.
+* Edit or delete tasks as needed.
 
-License
+### License
 This project is licensed under the MIT License - see the LICENSE file for details.

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import TodoItem from "./components/TodoItem";
+
 import {
     getNameToLocalStorage,
     getTodoListFromLocalStorage,
@@ -48,6 +49,7 @@ const TodoList = () => {
     }
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         timeId = setTimeout(() => {
             saveNameToLocalStorage(nameInput)
         }, 700)

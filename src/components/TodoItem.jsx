@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, useCallback} from 'react';
 import {saveToLocalStorage} from "../utils/localStorage";
 import InputItem from "./InputItem";
-import {logDOM} from "@testing-library/react";
+
 
 const TodoItem = ({item, todo, setTodo}) => {
 
-    const [_, setCategory] = useState('')
+    const [, setCategory] = useState('')
     const [task, setTask] = useState(item ? item.task : 'Error')
     const [edit, setEdit] = useState(false)
 
@@ -22,37 +22,35 @@ const TodoItem = ({item, todo, setTodo}) => {
             )
         }
         saveToLocalStorage(todo)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [edit, task, setTodo, item.id])
 
     useEffect(() => {
         saveToLocalStorage(todo)
-    }, [todo, setTodo]);
+    }, [todo, setTodo])
 
-    const editTask = () => {
+    const editTask = useCallback(() => {
         if (edit && task.trim().length < 3){
             alert('Длина задачи должна быть не менее 3')
             inputRef.current.focus()
-        }else {
+        } else {
             setEdit(prev => !prev)
         }
-    }
+    }, [edit, task, setEdit]);
 
-
-    const deleteTask = () => {
+    const deleteTask = useCallback(() => {
         setTodo((prevTodo) => {
-            const newTodo = prevTodo.filter((el) => el.id !== item.id)
+            const newTodo = prevTodo.filter((el) => el.id !== item.id);
             if (newTodo.length === 0) {
-                saveToLocalStorage([])
+                saveToLocalStorage([]);
             } else {
-                saveToLocalStorage(newTodo)
+                saveToLocalStorage(newTodo);
             }
+            return newTodo;
+        });
+    }, [item.id, setTodo]);
 
-            return newTodo
-        })
-    }
-
-
-    const checkTask = () => {
+    const checkTask = useCallback(() => {
         setTodo((prevTodo) =>
             prevTodo.map((el) => {
                 if (el.id === item.id) {
@@ -65,9 +63,8 @@ const TodoItem = ({item, todo, setTodo}) => {
                 }
             })
         );
-
-        setCategory((prevCategory) => (prevCategory.length ? '' : 'icon-dot-circled'))
-    }
+        setCategory((prevCategory) => (prevCategory.length ? '' : 'icon-dot-circled'));
+    }, [item.id, setTodo]);
 
 
 

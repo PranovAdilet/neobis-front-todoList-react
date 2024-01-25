@@ -25,9 +25,12 @@ const TodoItem = ({item, todo, setTodo}) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [edit, task, setTodo, item.id])
 
+
+
     useEffect(() => {
         saveToLocalStorage(todo)
     }, [todo, setTodo])
+
 
     const editTask = useCallback(() => {
         if (edit && task.trim().length < 3){
@@ -36,7 +39,8 @@ const TodoItem = ({item, todo, setTodo}) => {
         } else {
             setEdit(prev => !prev)
         }
-    }, [edit, task, setEdit]);
+    }, [edit, task, setEdit])
+
 
     const deleteTask = useCallback(() => {
         setTodo((prevTodo) => {
@@ -48,7 +52,9 @@ const TodoItem = ({item, todo, setTodo}) => {
             }
             return newTodo;
         });
-    }, [item.id, setTodo]);
+    }, [item.id, setTodo])
+
+
 
     const checkTask = useCallback(() => {
         setTodo((prevTodo) =>

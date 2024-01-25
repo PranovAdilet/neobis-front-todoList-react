@@ -15,6 +15,6 @@ export const saveNameToLocalStorage = (name) => {
     localStorage.setItem('TodoName', JSON.stringify(name))
 }
 
-export const getNameToLocalStorage = () => {
+export const getNameFromLocalStorage = () => {
     return  JSON.parse(localStorage.getItem('TodoName'))
 }

@@ -5,10 +5,15 @@ const InputItem = ({task, inputRef, setTask, setEdit, check}) => {
         setTask(e.target.value)
     }
     const handleKeyDown = (e) => {
-
-        if (e.key === 'Enter'){
-            setEdit(false)
+        if (e.key === 'Enter') {
+            e.preventDefault()
+            if (task.trim() !== "") {
+                setEdit(false);
+            } else {
+                alert('Поле не может быть пустым!');
+            }
         }
+
     }
 
     return (

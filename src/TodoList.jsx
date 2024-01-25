@@ -2,11 +2,12 @@ import React, {useEffect, useState} from 'react';
 import TodoItem from "./components/TodoItem";
 
 import {
-    getNameToLocalStorage,
+    getNameFromLocalStorage,
     getTodoListFromLocalStorage,
     saveNameToLocalStorage,
     saveToLocalStorage
 } from "./utils/localStorage";
+
 
 const TodoList = () => {
 
@@ -16,7 +17,7 @@ const TodoList = () => {
     const [category, setCategory] = useState('')
     const [task, setTask] = useState('')
 
-    const nameFromLocalStorage = getNameToLocalStorage()
+    const nameFromLocalStorage = getNameFromLocalStorage()
 
     const [nameInput, setNameInput] = useState(nameFromLocalStorage || '')
 
@@ -55,10 +56,12 @@ const TodoList = () => {
         }, 700)
     }, [nameInput]);
 
+
     const handleNameInput = (e) => {
         clearTimeout(timeId)
         setNameInput(e.target.value)
     }
+
 
     return (
         <form onSubmit={(e) => addTodo(e)} className="todo">
